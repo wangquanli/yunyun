@@ -1,0 +1,31 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UC</title>
+  <script src="html5-qrcode.min.js"></script>
+
+</head>
+
+<body>
+  <div id="reader"></div>
+  <button onclick="scanQRCode()">扫描</button>
+    <script type="text/javascript">
+      const html5QrCode = new Html5Qrcode("reader");
+      const qrCodeSuccessCallback = (decodedText, decodedResult) => {
+          /* handle success */
+          alert(decodedResult);
+      };
+      const config = { fps: 10, qrbox: { width: 250, height: 250 } };
+
+      function scanQRCode() {
+        html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
+      }
+    </script>
+
+</body>
+
+</html>
